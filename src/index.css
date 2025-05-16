@@ -1,0 +1,389 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-700: #033d54;
+  scroll-behavior: smooth;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  @apply bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white font-sans antialiased overflow-x-hidden selection:bg-primary-700 selection:text-white;
+  min-height: 100vh;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl leading-[1.1];
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl leading-[1.2];
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl leading-[1.3];
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-none font-medium transition-all duration-300 uppercase text-sm tracking-wider;
+  }
+
+  .btn-primary {
+    @apply bg-primary-700 dark:bg-primary-600 text-white hover:bg-primary-800 dark:hover:bg-primary-700;
+  }
+
+  .btn-outline {
+    @apply border border-primary-700 dark:border-primary-500 text-primary-700 dark:text-primary-400 hover:bg-primary-700 dark:hover:bg-primary-600 hover:text-white;
+  }
+
+  .section {
+    @apply py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Custom cursor styles */
+.cursor {
+  @apply fixed w-6 h-6 rounded-full bg-primary-700 dark:bg-primary-400 z-[100] pointer-events-none mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out;
+}
+
+.cursor.hover {
+  @apply scale-[2] bg-white;
+}
+
+.cursor-follower {
+  @apply fixed w-12 h-12 rounded-full border-2 border-primary-700 dark:border-primary-400 border-opacity-50 z-[99] pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out;
+}
+
+.cursor-follower.hover {
+  @apply scale-150 border-opacity-0;
+}
+
+/* Preloader styles */
+.preloader {
+  @apply fixed inset-0 w-full h-full z-50 flex items-center justify-center bg-white dark:bg-secondary-900 transition-opacity duration-500;
+}
+
+.preloader.loaded {
+  @apply opacity-0 pointer-events-none;
+}
+
+/* Animations */
+.split-words .word {
+  @apply inline-block overflow-hidden;
+}
+
+.char {
+  @apply inline-block;
+}
+
+.split-chars .char {
+  @apply inline-block opacity-0 transform translate-y-full;
+}
+
+.reveal-text {
+  @apply relative overflow-hidden;
+}
+
+.reveal-text::after {
+  content: "";
+  @apply absolute inset-0 bg-primary-700 dark:bg-primary-600 translate-x-0 z-10;
+}
+
+.reveal-image {
+  @apply relative overflow-hidden;
+}
+
+.reveal-image img {
+  @apply w-full h-full object-cover object-center scale-110;
+}
+
+.reveal-image::after {
+  content: "";
+  @apply absolute inset-0 bg-primary-700 dark:bg-primary-600 translate-x-0 z-10;
+}
+
+/* Magnetic effect */
+.magnetic-button {
+  @apply transition-transform duration-200 ease-out;
+}
+
+/* Service card hover effect */
+.service-card {
+  @apply relative overflow-hidden transition-all duration-500 ease-out;
+}
+
+.service-card:hover {
+  @apply transform -translate-y-2;
+}
+
+/* Work grid item hover effect */
+.work-item {
+  @apply relative overflow-hidden;
+}
+
+.work-item-overlay {
+  @apply absolute inset-0 bg-primary-700 dark:bg-primary-600 bg-opacity-90 flex flex-col justify-end p-6 translate-y-full transition-transform duration-500 ease-out;
+}
+
+.work-item:hover .work-item-overlay {
+  @apply translate-y-0;
+}
+
+.work-item img {
+  @apply transition-transform duration-700 ease-out;
+}
+
+.work-item:hover img {
+  @apply scale-110;
+}
+
+/* Team member hover effect */
+.team-member {
+  @apply relative overflow-hidden;
+}
+
+.team-member-info {
+  @apply absolute inset-0 bg-primary-700 dark:bg-primary-600 bg-opacity-90 flex flex-col justify-end p-6 translate-y-full transition-transform duration-500 ease-out;
+}
+
+.team-member:hover .team-member-info {
+  @apply translate-y-0;
+}
+
+/* Dark mode transitions */
+.dark {
+  color-scheme: dark;
+}
+
+/* Smooth transition for dark mode */
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+
+/* Carousel styles */
+.carousel-container {
+  @apply relative overflow-hidden;
+}
+
+.carousel-slide {
+  @apply transition-all duration-500 ease-out;
+}
+
+.carousel-indicator {
+  @apply w-3 h-3 rounded-full transition-all duration-300 cursor-pointer;
+}
+
+.carousel-indicator.active {
+  @apply bg-primary-700 dark:bg-primary-400;
+}
+
+.carousel-indicator:not(.active) {
+  @apply bg-primary-200 dark:bg-primary-700 hover:bg-primary-300 dark:hover:bg-primary-600;
+}
+
+.carousel-button {
+  @apply w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110;
+}
+
+/* Scroll animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered animation for children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-children.is-visible > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.stagger-children.is-visible > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.stagger-children.is-visible > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.stagger-children.is-visible > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.stagger-children.is-visible > *:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+.stagger-children.is-visible > *:nth-child(6) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+.stagger-children.is-visible > *:nth-child(7) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+.stagger-children.is-visible > *:nth-child(8) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+.stagger-children.is-visible > *:nth-child(9) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.9s;
+}
+
+.stagger-children.is-visible > *:nth-child(10) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+/* Parallax effect */
+.parallax {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.8, 1);
+}
+
+/* Project card styles */
+.project-card {
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Featured project styles */
+.featured-project {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.featured-project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Masonry grid adjustments */
+@media (min-width: 768px) {
+  .project-card:nth-child(3n + 1) {
+    grid-row: span 2;
+  }
+}
