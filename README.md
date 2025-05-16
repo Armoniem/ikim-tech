@@ -2,6 +2,8 @@
 
 This project is a complete redesign of the [IkimTechCo](https://www.ikimtechco.com/) landing page. The redesign focuses on clean, modern aesthetics using **React.js** and follows the **Swiss/International Typographic Style** principles for a minimalist, grid-based layout that prioritizes clarity, structure, and visual hierarchy.
 
+![Landing Page Screenshot](public/Screenshot.png)
+
 ## 🧠 Project Overview
 
 - **Tech Stack:** React.js, CSS Modules / Tailwind CSS (optional), Vite / Create React App
